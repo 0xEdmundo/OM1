@@ -10,6 +10,21 @@ class UbTtsProvider:
     """
 
     def __init__(self, url: str):
+        """
+        Initialize the Ubtech TTS Provider.
+
+        Parameters
+        ----------
+        url : str
+            The endpoint URL for the Ubtech TTS service.
+
+        Attributes
+        ----------
+        tts_url : str
+            The stored TTS service URL.
+        headers : dict
+            HTTP headers for TTS requests, including Content-Type.
+        """
         self.tts_url = url
         self.headers = {"Content-Type": "application/json"}
         logging.info(f"Ubtech TTS Provider initialized for URL: {self.tts_url}")
