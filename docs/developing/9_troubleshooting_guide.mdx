@@ -12,3 +12,16 @@ description: "Guide to troubleshoot some common issues"
 | Robot not moving        | Connection issue/Network issue            | Restart OM1/Robot and check your internet connection                                        |
 | OpenSSL certificate issue | Security certificate not found | `uv pip install certifi` `export SSL_CERT_FILE=$(python3 -m certifi)` `export REQUESTS_CA_BUNDLE=$(python3 -m certifi)` |
 | Error message during build: `fatal error: portaudio.h: No such file or directory compilation terminated. error: command '/usr/bin/gcc' failed with exit code 1` | The issue is due to python-all-dev being deprecated and unavailable in non standard Ubuntu installations. | Installing only PortAudio development headers fixes the problem: `sudo apt-get update` `sudo apt-get install portaudio19-dev`|
+
+### Running OM1 Headless or on VMs
+
+When running OM1 on headless servers or virtual machines without audio/display hardware, you may see these **non-fatal warnings**:
+
+| Warning | Cause | Solution |
+|---------|-------|----------|
+| `ALSA lib confmisc.c:...` | No audio hardware | Safe to ignore, or install: `sudo apt-get install libasound2-dev` |
+| `jackd server not running` | JACK audio not available | Safe to ignore if not using JACK audio |
+| `libGL error: failed to load driver` | No GPU/display | Use virtual framebuffer: `Xvfb :99 -screen 0 1024x768x24 &` then `export DISPLAY=:99` |
+| `PulseAudio: Unable to connect` | No PulseAudio daemon | Safe to ignore, or start: `pulseaudio --start` |
+
+These warnings do not prevent OM1 from functioning. Audio/video features will be unavailable, but core functionality works normally.
