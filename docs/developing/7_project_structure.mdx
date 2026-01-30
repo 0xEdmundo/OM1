@@ -12,12 +12,16 @@ description: "Project structure and flow diagram"
 │   ├── actions/          # Agent outputs/actions/capabilities
 │   ├── backgrounds/      # Background tasks
 │   ├── fuser/            # Input fusion logic
+│   ├── hooks/            # Lifecycle hooks and event handlers
 │   ├── inputs/           # Input plugins (e.g. VLM, audio)
 │   ├── llm/              # LLM integration
-│   ├── providers/        # Background tasks
+│   ├── providers/        # Service providers (TTS, ASR, etc.)
 │   ├── runtime/          # Core runtime system
 │   ├── simulators/       # Virtual endpoints such as `WebSim`
+│   ├── ubtech/           # Ubtech robot-specific integrations
+│   ├── unitree/          # Unitree robot-specific integrations
 │   ├── zenoh_msgs/       # Zenoh's Interface Definition Language (IDL)
+│   ├── cli.py            # CLI commands implementation
 │   └── run.py            # CLI entry point
 ```
 
